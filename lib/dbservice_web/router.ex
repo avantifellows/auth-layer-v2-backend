@@ -26,6 +26,8 @@ defmodule DbserviceWeb.Router do
     resources("/student-profile", StudentProfileController, except: [:new, :edit])
     resources("/teacher-profile", TeacherProfileController, except: [:new, :edit])
     resources("/school", SchoolController, except: [:new, :edit])
+    resources("/language", LanguageController, except: [:new, :edit])
+    resources("/skill", SkillController, except: [:new, :edit])
     resources("/enrollment-record", EnrollmentRecordController, except: [:new, :edit])
     resources("/session", SessionController, only: [:index, :create, :update, :show])
     post("/session/:id/update-groups", SessionController, :update_groups)
@@ -69,6 +71,10 @@ defmodule DbserviceWeb.Router do
     delete("/cleanup-student/:student_id", UserSessionController, :cleanup_student)
     delete("/remove-batch/:student_id/:batch_id", UserSessionController, :remove_batch_mapping)
     post("/student/:student_id/status", StudentController, :update_student_status)
+    resources("/chapter-curriculum", ChapterCurriculumController, except: [:new, :edit])
+    resources("/resource-curriculum", ResourceCurriculumController, except: [:new, :edit])
+    resources("/resource-chapter", ResourceChapterController, except: [:new, :edit])
+    resources("/resource-topic", ResourceTopicController, except: [:new, :edit])
 
     def swagger_info do
       source(["config/.env", "config/.env"])
